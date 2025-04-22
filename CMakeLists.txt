@@ -17,10 +17,12 @@ endif()
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
 add_subdirectory(projects/hello_world)
+add_subdirectory(projects/leetcode)
 add_subdirectory(projects/lock_free)
 
 if(BUILD_TESTS)
   enable_testing()
   add_subdirectory(thirdparty/googletest)
+  add_subdirectory(tests/leetcode)
   add_subdirectory(tests/lock_free)
 endif()
