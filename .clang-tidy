@@ -1,0 +1,43 @@
+Checks: >
+  # Google C++ Style Guide
+  google-*,
+  # Guidelines Support Library & Core guidelines
+  cppcoreguidelines-*,
+  # Code modernization (C++11 and beyond)
+  modernize-*,
+  # Performance-related improvements
+  performance-*,
+  # General readability
+  readability-*,
+  # Static analyzer built into Clang
+  clang-analyzer-*,
+  # Miscellaneous helpful checks
+  misc-*,
+  # Unused using declarations, includes, etc.
+  misc-unused-using-decls,
+  # LLVM-specific best practices
+  llvm-*,
+  # Bug-prone patterns
+  bugprone-*
+
+  # Only analyze our own source files in src/
+HeaderFilterRegex: '^src/.*'
+
+# Let clang-tidy know where to get formatting rules (from .clang-format)
+FormatStyle: file
+
+# Optional: promote all warnings to errors (can be useful for CI)
+WarningsAsErrors: '*'
+
+# Optional: fine-tune individual checks
+CheckOptions:
+  - key:             modernize-use-trailing-return-type.MinTypeNameLength
+    value:           '4'
+  - key:             readability-identifier-naming.ClassCase
+    value:           CamelCase
+  - key:             readability-identifier-naming.FunctionCase
+    value:           camelBack
+  - key:             readability-identifier-naming.VariableCase
+    value:           camelBack
+  - key:             misc-unused-using-decls.StrictMode
+    value:           'true'
