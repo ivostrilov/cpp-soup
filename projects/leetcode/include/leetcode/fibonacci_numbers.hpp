@@ -7,6 +7,7 @@ namespace LeetCode {
 
 class FibonacciNumbers {
  public:
+  std::size_t get_number_by_bottom_up(std::size_t n);
   std::size_t get_number_by_top_down(std::size_t n);
 };
 
