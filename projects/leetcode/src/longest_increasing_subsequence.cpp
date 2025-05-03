@@ -1,6 +1,7 @@
 #include "leetcode/longest_increasing_subsequence.hpp"
 
 #include <algorithm>
+#include <set>
 #include <vector>
 
 namespace CPPSoup {
@@ -43,6 +44,30 @@ int LongestIncreasingSubsequence::lengthOfLIS_v2(std::vector<int> &nums) {
         break;
       }
     }
+  }
+
+  return optimal_subsequence.size();
+}
+
+int LongestIncreasingSubsequence::lengthOfLIS_optimal(std::vector<int> &nums) {
+  std::set<int> optimal_subsequence;
+
+  for (std::size_t i = 0; i < nums.size(); ++i) {
+    int value = nums[i];
+
+    auto equel = optimal_subsequence.find(value);
+    if (equel != optimal_subsequence.end()) {
+      continue;
+    }
+
+    auto bigger = optimal_subsequence.upper_bound(value);
+    if (bigger == optimal_subsequence.end()) {
+      optimal_subsequence.insert(value);
+      continue;
+    }
+
+    optimal_subsequence.erase(bigger);
+    optimal_subsequence.insert(value);
   }
 
   return optimal_subsequence.size();

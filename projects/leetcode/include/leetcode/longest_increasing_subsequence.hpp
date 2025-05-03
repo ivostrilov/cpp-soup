@@ -35,6 +35,9 @@ class LongestIncreasingSubsequence {
 
   // O(n^2)
   int lengthOfLIS_v2(std::vector<int>& nums);
+
+  // O(n*log(n))
+  int lengthOfLIS_optimal(std::vector<int>& nums);
 };
 
 }  // namespace LeetCode
