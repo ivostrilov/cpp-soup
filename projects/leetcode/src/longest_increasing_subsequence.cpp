@@ -22,8 +22,30 @@ int LongestIncreasingSubsequence::lengthOfLIS(std::vector<int> &nums) {
     results.emplace_back(max);
   }
 
-
   return *std::max_element(results.cbegin(), results.cend());
+}
+
+int LongestIncreasingSubsequence::lengthOfLIS_v2(std::vector<int> &nums) {
+  std::vector<int> optimal_subsequence;
+  optimal_subsequence.reserve(nums.size());
+
+  for (std::size_t i = 0; i < nums.size(); ++i) {
+    int value = nums[i];
+
+    if (optimal_subsequence.empty() || value > optimal_subsequence.back()) {
+      optimal_subsequence.emplace_back(value);
+      continue;
+    }
+
+    for (std::size_t j = 0; j < optimal_subsequence.size(); ++j) {
+      if (optimal_subsequence[j] >= value) {
+        optimal_subsequence[j] = value;
+        break;
+      }
+    }
+  }
+
+  return optimal_subsequence.size();
 }
 
 }  // namespace LeetCode

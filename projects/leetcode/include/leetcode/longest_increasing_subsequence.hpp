@@ -32,6 +32,9 @@ class LongestIncreasingSubsequence {
  public:
   // O(n^2)
   int lengthOfLIS(std::vector<int>& nums);
+
+  // O(n^2)
+  int lengthOfLIS_v2(std::vector<int>& nums);
 };
 
 }  // namespace LeetCode
